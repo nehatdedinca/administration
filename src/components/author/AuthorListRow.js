@@ -4,8 +4,7 @@ import { Link } from 'react-router';
 const AuthorListRow = ({author}) => {
     return (
         <tr>
-            {/* <td><Link to={'/course/' + course.id}>{course.title}</Link></td> */}
-            <td>{author.firstName}</td>
+            <td><Link to={'/author/' + author.id}>{author.firstName}</Link></td>
             <td>{author.lastName}</td>
         </tr>
     );
