@@ -9,16 +9,16 @@ class AuthorPage extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        // this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+        this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this);
     }
 
     authorRow(author, index) {
         return <div key={index}>{author.firstName}</div>;
     }
 
-    // redirectToAddCoursePage() {
-    //     browserHistory.push('/course');
-    // }
+    redirectToAddAuthorPage() {
+        browserHistory.push('/author');
+    }
 
     render () {
         const { authors } = this.props;
@@ -29,8 +29,8 @@ class AuthorPage extends React.Component {
                 <input
                     type="submit"
                     value="Add Author"
-                    className="btn btn-primary" />
-                    {/* onClick={this.redirectToAddCoursePage} /> */}
+                    className="btn btn-primary"
+                    onClick={this.redirectToAddAuthorPage} />
                 <AuthorList authors={authors} />
             </div>
         );

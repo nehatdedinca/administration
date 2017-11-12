@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const AuthorForm = ({author, allAuthors, onSave, onChange, saving, errors}) => {
+const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
     return (
         <form>
             <h1>Manage Authors</h1>
@@ -32,7 +32,6 @@ const AuthorForm = ({author, allAuthors, onSave, onChange, saving, errors}) => {
 
 AuthorForm.propTypes = {
     author: PropTypes.object.isRequired,
-    allAuthors: PropTypes.array,
     onSave: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     saving: PropTypes.bool,

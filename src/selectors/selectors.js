@@ -6,3 +6,12 @@ export function authorsFormattedForDropdown(authors) {
         };
     });
 }
+
+export function coursesFormattedForDropdown(courses) {
+    return courses.map(course => {
+        return {
+            value: course.id,
+            text: course.title 
+        };
+    });
+}
