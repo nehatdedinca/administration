@@ -27,7 +27,6 @@ class CoursesPage extends React.Component {
     }
 
     deleteCourse(course) {
-        // debugger;
         this.setState({deleting: true});
 
         this.props.actions.deleteCourse(course)
