@@ -4,12 +4,18 @@ import { bindActionCreators } from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorList from './AuthorList';
 import { browserHistory } from 'react-router';
+import toastr from 'toastr';
 
 class AuthorPage extends React.Component {
     constructor(props, context) {
         super(props, context);
 
+        this.state = {
+            deleting: false
+        };
+
         this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this);
+        this.deleteAuthor = this.deleteAuthor.bind(this);
     }
 
     authorRow(author, index) {
@@ -18,6 +24,19 @@ class AuthorPage extends React.Component {
 
     redirectToAddAuthorPage() {
         browserHistory.push('/author');
+    }
+
+    deleteAuthor(author) {
+        this.setState({deleting: true});
+
+        this.props.actions.deleteAuthor(author)
+            .then(() => {
+                this.setState({deleting: false});
+                toastr.success('Author deleted!');
+            }).catch(error => {
+                toastr.error(error);
+                this.setState({deleting: false});
+            });
     }
 
     render () {
@@ -31,7 +50,7 @@ class AuthorPage extends React.Component {
                     value="Add Author"
                     className="btn btn-primary"
                     onClick={this.redirectToAddAuthorPage} />
-                <AuthorList authors={authors} />
+                <AuthorList authors={authors} deleteAuthor={this.deleteAuthor} />
             </div>
         );
     }
