@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorList from './AuthorList';
+import AuthorListEmpty from './AuthorListEmpty';
 import { browserHistory } from 'react-router';
 import toastr from 'toastr';
 
@@ -42,6 +43,9 @@ class AuthorPage extends React.Component {
     render () {
         const { authors } = this.props;
 
+        const showAuthorsList = (authors.length > 0) ?
+                <AuthorList authors={authors} deleteAuthor={this.deleteAuthor} /> : <AuthorListEmpty />;
+
         return (
             <div>
                 <h1>Authors</h1>
@@ -50,7 +54,7 @@ class AuthorPage extends React.Component {
                     value="Add Author"
                     className="btn btn-primary"
                     onClick={this.redirectToAddAuthorPage} />
-                <AuthorList authors={authors} deleteAuthor={this.deleteAuthor} />
+                {showAuthorsList}
             </div>
         );
     }
