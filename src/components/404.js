@@ -1,0 +1,16 @@
+import React from 'react';
+import { Link } from 'react-router';
+
+class NotFoundPage extends React.Component {
+    render () {
+        return (
+            <div>
+                <h1>Not found page!</h1>
+                <p>Whoops! Sorry, there is nothing to see here.</p>
+                <p><Link to="">Go back to Home page</Link></p>
+            </div>
+        );
+    }
+}
+
+export default NotFoundPage;
